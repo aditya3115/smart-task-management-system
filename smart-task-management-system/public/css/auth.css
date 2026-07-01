@@ -1,0 +1,130 @@
+﻿:root {
+  --bg-page: #eff4fb;
+  --bg-panel: #ffffff;
+  --border: #e2e8f0;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --radius: 28px;
+  --shadow-soft: 0 28px 70px rgba(15, 23, 42, 0.08);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(37, 99, 235, 0.08), transparent 28%),
+    #eff4fb;
+  color: var(--text-main);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.auth-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.auth-panel,
+.auth-panel.bg-white {
+  width: min(560px, 100%);
+  border-radius: var(--radius);
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  color: var(--text-main);
+}
+
+.auth-panel {
+  padding: 2rem;
+}
+
+.auth-hero {
+  display: none;
+}
+
+.brand-lockup {
+  margin-bottom: 1.5rem;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-hover));
+  color: #fff;
+  font-weight: 700;
+}
+
+.auth-panel h2,
+.auth-panel .h4 {
+  color: var(--text-main);
+}
+
+.auth-panel p,
+.auth-panel .text-secondary,
+.auth-panel .form-text {
+  color: var(--text-muted);
+}
+
+.form-control,
+.form-select {
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  color: var(--text-main);
+}
+
+.form-control::placeholder {
+  color: rgba(100, 116, 139, 0.7);
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: var(--accent);
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: var(--accent-hover);
+  --bs-btn-active-bg: #1e40af;
+  --bs-btn-active-border-color: #1e40af;
+  color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.18);
+}
+
+.small-link {
+  color: var(--accent);
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  font-weight: 700;
+}
+
+.badge.bg-primary-soft {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent) !important;
+}
+
+.badge.bg-success-soft {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981 !important;
+}
+
+.badge.bg-info-soft {
+  background: rgba(56, 189, 248, 0.1);
+  color: #38bdf8 !important;
+}
+
+.badge.bg-warning-soft {
+  background: rgba(251, 191, 36, 0.12);
+  color: #fbbf24 !important;
+}

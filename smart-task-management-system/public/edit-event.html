@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit Event | Smart Task Management System</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+      <div class="container-fluid px-3 px-lg-4">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/dashboard.html"><span class="brand-mark-sm">ST</span><span>Smart Tasks</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="/dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tasks.html">Task List</a></li>
+            <li class="nav-item"><a class="nav-link" href="/events.html">Events</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/edit-event.html">Edit Event</a></li>
+            <li class="nav-item"><a class="nav-link" href="/profile.html">Profile</a></li>
+            <li class="nav-item ms-lg-2"><button id="logoutButton" class="btn btn-outline-danger btn-sm" type="button">Logout</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="app-main">
+      <div class="container-fluid px-3 px-lg-4 py-4">
+        <section class="page-heading mb-4">
+          <div>
+            <p class="text-secondary mb-1">Edit Event</p>
+            <h1 class="h3 mb-1">Update Event Details</h1>
+            <p class="text-secondary mb-0">Modify event title, status, location, and schedule.</p>
+          </div>
+          <a class="btn btn-outline-secondary" href="/events.html">Back to Events</a>
+        </section>
+
+        <section class="content-panel form-panel">
+          <div id="eventFormAlert" class="alert d-none" role="alert"></div>
+          <div id="eventFormLoading" class="loading-state">
+            <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading</span></div>
+          </div>
+          <form id="eventForm" data-mode="edit" class="d-none" novalidate>
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" minlength="3" maxlength="150" required>
+                <div class="invalid-feedback">Title must be between 3 and 150 characters.</div>
+              </div>
+              <div class="col-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+              </div>
+              <div class="col-md-4">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-select" id="status" name="status">
+                  <option value="scheduled">Scheduled</option>
+                  <option value="completed">Completed</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="eventDate" class="form-label">Event Date</label>
+                <input type="date" class="form-control" id="eventDate" name="eventDate">
+              </div>
+              <div class="col-md-4">
+                <label for="location" class="form-label">Location</label>
+                <input type="text" class="form-control" id="location" name="location" maxlength="150">
+              </div>
+              <div class="col-12">
+                <label for="category" class="form-label">Category</label>
+                <input type="text" class="form-control" id="category" name="category" minlength="2" maxlength="80" value="General">
+                <div class="invalid-feedback">Category must be between 2 and 80 characters.</div>
+              </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 mt-4">
+              <button id="eventFormButton" class="btn btn-primary" type="submit">Save Changes</button>
+              <a class="btn btn-outline-secondary" href="/events.html">Cancel</a>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app-common.js"></script>
+    <script src="/js/event-form.js"></script>
+  </body>
+</html>

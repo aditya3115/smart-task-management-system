@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard | Smart Task Management System</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+      <div class="container-fluid px-3 px-lg-4">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/dashboard.html">
+          <span class="brand-mark-sm">ST</span>
+          <span>Smart Tasks</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tasks.html">Tasks</a></li>
+            <li class="nav-item"><a class="nav-link" href="/events.html">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="/profile.html">Profile</a></li>
+            <li class="nav-item ms-lg-2"><button id="logoutButton" class="btn btn-outline-danger btn-sm" type="button">Logout</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="app-main">
+      <div class="container-fluid px-3 px-lg-4 py-4">
+        <div id="dashboardAlert" class="alert d-none" role="alert"></div>
+
+        <section class="dashboard-welcome mb-4">
+          <h1>Welcome back.</h1>
+          <p>See a quick summary of your most important tasks, upcoming deadlines, and activity in one view.</p>
+          <div class="dashboard-actions d-flex flex-wrap gap-2 mt-3">
+            <a class="btn btn-primary" href="/add-task.html">Add Task</a>
+            <a class="btn btn-outline-secondary" href="/tasks.html">View Tasks</a>
+            <a class="btn btn-outline-secondary" href="/events.html">View Events</a>
+          </div>
+        </section>
+
+        <section class="dashboard-summary mb-4">
+          <article class="summary-card content-panel">
+            <small>Total tasks</small>
+            <strong id="totalTasks">0</strong>
+          </article>
+          <article class="summary-card content-panel">
+            <small>Pending</small>
+            <strong id="pendingTasks">0</strong>
+          </article>
+          <article class="summary-card content-panel">
+            <small>Completed</small>
+            <strong id="completedTasks">0</strong>
+          </article>
+          <article class="summary-card content-panel">
+            <small>Overdue</small>
+            <strong id="overdueTasks">0</strong>
+          </article>
+        </section>
+
+        <div class="dashboard-grid">
+          <section class="dashboard-section dashboard-section--half content-panel">
+            <div class="dashboard-section__heading">
+              <div>
+                <h2 class="h5 mb-1">Recent Tasks</h2>
+                <p class="text-secondary mb-0">Your most recent task activity appears here.</p>
+              </div>
+              <a class="btn btn-sm btn-outline-secondary" href="/tasks.html">View all</a>
+            </div>
+            <div id="recentTasksEmpty" class="empty-state d-none">
+              <h3 class="h6 mb-2">No recent tasks</h3>
+              <p class="text-secondary mb-3">Start by creating a task or update an existing one.</p>
+              <a class="btn btn-primary btn-sm" href="/add-task.html">Add Task</a>
+            </div>
+            <div id="recentTasks" class="recent-tasks-list"></div>
+          </section>
+
+          <section class="dashboard-section dashboard-section--half content-panel">
+            <div class="dashboard-section__heading">
+              <div>
+                <h2 class="h5 mb-1">Due Soon</h2>
+                <p class="text-secondary mb-0">Tasks due in the next 7 days.</p>
+              </div>
+              <span id="upcomingEventsCount" class="badge bg-primary">0 upcoming</span>
+            </div>
+            <div id="dueSoonList" class="due-soon-list"></div>
+          </section>
+        </div>
+
+        <section class="content-panel mt-4">
+          <div class="panel-header">
+            <div>
+              <h2 class="h5 mb-1">Fast actions</h2>
+              <p class="text-secondary mb-0">Use quick navigation to manage your work.</p>
+            </div>
+          </div>
+          <div class="row g-3">
+            <div class="col-12 col-sm-6 col-xl-3">
+              <a class="btn btn-outline-secondary w-100" href="/add-task.html">New Task</a>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+              <a class="btn btn-outline-secondary w-100" href="/tasks.html">Task List</a>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+              <a class="btn btn-outline-secondary w-100" href="/events.html">Events</a>
+            </div>
+            <div class="col-12 col-sm-6 col-xl-3">
+              <a class="btn btn-outline-secondary w-100" href="/profile.html">Profile</a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app-common.js"></script>
+    <script src="/js/dashboard.js"></script>
+  </body>
+</html>

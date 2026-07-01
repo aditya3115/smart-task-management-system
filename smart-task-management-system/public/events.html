@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events | Smart Task Management System</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+      <div class="container-fluid px-3 px-lg-4">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/dashboard.html">
+          <span class="brand-mark-sm">ST</span>
+          <span>Smart Tasks</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="/dashboard.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/tasks.html">Task List</a></li>
+            <li class="nav-item"><a class="nav-link" href="/add-task.html">Add Task</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href="/events.html">Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="/profile.html">Profile</a></li>
+            <li class="nav-item ms-lg-2"><button id="logoutButton" class="btn btn-outline-danger btn-sm" type="button">Logout</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="app-main">
+      <div class="container-fluid px-3 px-lg-4 py-4">
+        <div id="eventAlert" class="alert d-none" role="alert"></div>
+
+        <section class="page-heading mb-4">
+          <div>
+            <p class="text-secondary mb-1">Events</p>
+            <h1 class="h3 mb-1">Manage Events</h1>
+            <p class="text-secondary mb-0">Create, filter, and complete events on your schedule.</p>
+          </div>
+          <a class="btn btn-primary" href="/add-event.html">Add Event</a>
+        </section>
+
+        <section class="content-panel mb-4">
+          <form id="eventFilterForm" class="row g-3 align-items-end">
+            <div class="col-12 col-md-4 col-xl-3">
+              <label for="search" class="form-label">Search</label>
+              <input type="search" id="search" name="search" class="form-control" minlength="2" maxlength="100" placeholder="Title, description, category, location">
+            </div>
+            <div class="col-6 col-md-4 col-xl-2">
+              <label for="status" class="form-label">Status</label>
+              <select id="status" name="status" class="form-select">
+                <option value="">All</option>
+                <option value="scheduled">Scheduled</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-4 col-xl-2">
+              <label for="category" class="form-label">Category</label>
+              <input type="text" class="form-control" id="category" name="category" placeholder="Category">
+            </div>
+            <div class="col-6 col-md-4 col-xl-2">
+              <label for="sortBy" class="form-label">Sort By</label>
+              <select id="sortBy" name="sortBy" class="form-select">
+                <option value="eventDate">Event Date</option>
+                <option value="createdAt">Created</option>
+                <option value="category">Category</option>
+                <option value="status">Status</option>
+                <option value="title">Title</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-4 col-xl-1">
+              <label for="sortOrder" class="form-label">Order</label>
+              <select id="sortOrder" name="sortOrder" class="form-select">
+                <option value="desc">Desc</option>
+                <option value="asc">Asc</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-4 col-xl-2 d-grid">
+              <button class="btn btn-outline-secondary" type="submit">Apply</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="content-panel">
+          <div class="panel-header">
+            <div>
+              <h2 class="h5 mb-1">Events</h2>
+              <p id="eventCount" class="text-secondary mb-0">Loading events...</p>
+            </div>
+          </div>
+
+          <div id="eventsLoading" class="loading-state">
+            <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading</span></div>
+          </div>
+
+          <div id="eventsEmpty" class="empty-state d-none">
+            <h3 class="h6 mb-2">No events found</h3>
+            <p class="text-secondary mb-3">Try changing filters or create a new event.</p>
+            <a class="btn btn-primary btn-sm" href="/add-event.html">Add Event</a>
+          </div>
+
+          <div id="eventsList" class="task-list"></div>
+        </section>
+      </div>
+    </main>
+
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/app-common.js"></script>
+    <script src="/js/events.js"></script>
+  </body>
+</html>
