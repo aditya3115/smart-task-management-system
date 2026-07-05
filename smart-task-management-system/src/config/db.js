@@ -1,15 +1,44 @@
 const mysql = require("mysql2/promise");
 
-const pool = mysql.createPool({
-  host: process.env.DB_HOST || process.env.MYSQLHOST || "localhost",
-  user: process.env.DB_USER || process.env.MYSQLUSER || "root",
-  password: process.env.DB_PASSWORD || process.env.MYSQLPASSWORD || "",
-  database: process.env.DB_NAME || process.env.MYSQLDATABASE || "smart_task_management_system",
-  port: Number(process.env.DB_PORT || process.env.MYSQLPORT) || 3306,
+const parseDatabaseUrl = (value) => {
+  if (!value) {
+    return {};
+  }
+
+  try {
+    const url = new URL(value);
+
+    return {
+      host: url.hostname,
+      user: decodeURIComponent(url.username),
+      password: decodeURIComponent(url.password),
+      database: url.pathname.replace("/", ""),
+      port: Number(url.port) || 3306,
+    };
+  } catch (error) {
+    console.warn("Invalid database URL ignored:", error.message);
+    return {};
+  }
+};
+
+const urlConfig = parseDatabaseUrl(
+  process.env.DATABASE_URL ||
+  process.env.MYSQL_URL ||
+  process.env.MYSQL_PUBLIC_URL
+);
+
+const dbConfig = {
+  host: process.env.DB_HOST || process.env.MYSQLHOST || urlConfig.host || "localhost",
+  user: process.env.DB_USER || process.env.MYSQLUSER || urlConfig.user || "root",
+  password: process.env.DB_PASSWORD || process.env.MYSQLPASSWORD || urlConfig.password || "",
+  database: process.env.DB_NAME || process.env.MYSQLDATABASE || urlConfig.database || "smart_task_management_system",
+  port: Number(process.env.DB_PORT || process.env.MYSQLPORT || urlConfig.port) || 3306,
   waitForConnections: true,
   connectionLimit: Number(process.env.DB_CONNECTION_LIMIT) || 10,
   queueLimit: 0,
-});
+};
+
+const pool = mysql.createPool(dbConfig);
 
 const testConnection = async () => {
   try {
@@ -18,6 +47,7 @@ const testConnection = async () => {
     connection.release();
   } catch (error) {
     console.warn("MySQL database connection skipped:", error.message);
+    console.warn(`Database target: ${dbConfig.host}:${dbConfig.port}/${dbConfig.database}`);
     console.warn("Server will start, but database features need valid .env settings and a running MySQL server.");
   }
 };
