@@ -81,9 +81,9 @@ CREATE TABLE events (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO users (name, email, password_hash, role) VALUES
-('Admin User', 'admin@example.com', '$2b$12$7QJ8zqT4j4NmdZK01j1qu.RMzyQVp2oKZKJ.kxN5Bdt2lrONVuE3K', 'admin'),
-('Aditya Sharma', 'aditya@example.com', '$2b$12$7QJ8zqT4j4NmdZK01j1qu.RMzyQVp2oKZKJ.kxN5Bdt2lrONVuE3K', 'user'),
-('Demo User', 'demo@example.com', '$2b$12$7QJ8zqT4j4NmdZK01j1qu.RMzyQVp2lrONVuE3K', 'user');
+('Admin User', 'admin@example.com', '$2b$12$9Y4qhwiRUux9xL0w39wTU.RzRkSOESsNTOd5JEGvLyXj2NyYyB.Im', 'admin'),
+('Aditya Sharma', 'aditya@example.com', '$2b$12$9Y4qhwiRUux9xL0w39wTU.RzRkSOESsNTOd5JEGvLyXj2NyYyB.Im', 'user'),
+('Demo User', 'demo@example.com', '$2b$12$9Y4qhwiRUux9xL0w39wTU.RzRkSOESsNTOd5JEGvLyXj2NyYyB.Im', 'user');
 
 INSERT INTO tasks (user_id, title, description, status, priority, category, due_date, completed_at) VALUES
 (2, 'Prepare MCA project synopsis', 'Write the project introduction, objectives, scope, and modules.', 'completed', 'high', 'Academics', '2026-07-05', CURRENT_TIMESTAMP),

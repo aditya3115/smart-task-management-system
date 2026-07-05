@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const app = require("./app");
 const appConfig = require("./config/appConfig");
-const { pool, testConnection, ensureEventsTable } = require("./config/db");
+const { pool, testConnection, ensureDatabaseSchema } = require("./config/db");
 
 let server;
 let shuttingDown = false;
@@ -48,7 +48,7 @@ const registerShutdownHandlers = () => {
 const startServer = async () => {
   await testConnection();
   try {
-    await ensureEventsTable();
+    await ensureDatabaseSchema();
   } catch (error) {
     console.warn("Database schema check skipped:", error.message);
     console.warn("Import database/schema.sql to enable task and event features.");
