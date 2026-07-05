@@ -47,7 +47,12 @@ const registerShutdownHandlers = () => {
 
 const startServer = async () => {
   await testConnection();
-  await ensureEventsTable();
+  try {
+    await ensureEventsTable();
+  } catch (error) {
+    console.warn("Database schema check skipped:", error.message);
+    console.warn("Import database/schema.sql to enable task and event features.");
+  }
   registerShutdownHandlers();
 
   const basePort = appConfig.port;
